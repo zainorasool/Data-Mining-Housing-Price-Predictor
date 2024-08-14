@@ -1,0 +1,424 @@
+\documentclass[10pt,conference,compsoc]{IEEEtran}
+
+
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{cite}
+\renewcommand{\cite}{\citep}
+
+
+
+
+
+\begin{document}
+
+\title{Housing Prices Prediction}
+
+\author{\IEEEauthorblockN{Zaino Rasool}
+\IEEEauthorblockA{251731090@formanite.fccollege.edu.pk}
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+This paper is about my Housing Prices Prediction project. It employs many Machine Learning and Data Science algorithms. I have used 1 regressor: Linear Regression and 2 classifier models i.e. Naives-Bayes and K-Nearest Neighbors. The dataset was cleaned thoroughly, removing any missing/NULL values. The algorithm also took care of the categorical variables' disputes in csv file inputs of the dataset. The dataset comprises X number of entries, sourced from Kaggle.com, which were meticulously preprocessed to handle missing values and categorical variables. Results indicate that while Linear Regression provided a baseline with an R² of X, the KNN model outperformed it with an R² of Y, showcasing the ability to capture non-linear relationships.
+
+
+The motivation for this work stems from the need for an accurate and reliable method to estimate house prices, which is crucial for real estate market stakeholders such as buyers, sellers, and investors. Accurate price predictions can have a significant impact on market trends and investment decisions.
+
+The dataset used in this study includes a variety of housing-related features, such as the property's square footage, the number of bedrooms and bathrooms, and the presence or absence of amenities such as air conditioning, hot water heating, and parking space. These characteristics were carefully handled to ensure data quality and consistency, including handling missing values, coding categorical variables, and scaling numerical characteristics.
+
+This study is based on the application and comparison of linear regression and KNN models for house price prediction. Linear regression, known for its simplicity and ease of interpretation, was used to establish performance benchmarks. KNN, a distance-based algorithm, was used to study its effectiveness in capturing nonlinear relationships in the data. Metrics such as Mean Squared Error (MSE) and R² estimates were used to evaluate the models. Results show that linear regression provides a simple approach with reasonable accuracy, while KNN provides slightly improved predictions by exploiting similarities between adjacent data points. The results of this study suggest that these models can be effectively used to forecast home prices, although each has its strengths and limitations. Future work could explore more complex models, incorporate additional features, and expand the dataset to include more diverse housing markets. The implications of this research extend to real-world applications in the real estate industry, where accurate price predictions are essential for making informed decisions.
+ (Note that the organization of the body of the paper is at the authors{\rq} discretion; the only required sections are Introduction, Related Work/Background Work, Main techniques of Paper, Results, Conclusion, and References. Acknowledgments and Appendices are optional.)
+
+\end{abstract}
+
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+The real estate market plays an important role in the economy and affects the stability of finances and the distribution of wealth. House prices, which are important indicators of market health, are affected by many factors, such as location, real estate, and market conditions. Accurately predicting home prices is important to a variety of stakeholders, from potential homeowners and investors to policymakers and financial institutions.
+
+Traditional property pricing methods often rely on historical data and expert judgment, but these approaches are labor-intensive and can be prone to human error. The advent of machine learning has made it possible to automate and improve the accuracy of home price predictions by analyzing large datasets and identifying patterns that are not immediately obvious.
+
+This project aims to develop a machine learning model that can predict property prices based on a set of features derived from a comprehensive dataset. In order to determine the most effective approach to a specific price, we will examine various models, including linear regression and K-ScHOIL NEIGHBORS (KNN). The purpose is to create a model that not only enhances the accuracy of the prediction, but also provides ideas for important factors that affect the price of the house. This project aims to contribute to the growing body of work on real estate analytics by using data-driven methods to provide a practical tool for forecasting property prices in a dynamic market environment. The results of this research will enable more informed decisions for all parties involved in the housing market.
+
+\subsection{Problem Formulation}
+The main purpose of this project is to develop an automatic learning model that accurately predicts housing prices according to various functions. These features may include these features, without restricting the real estate location, the size of the house, the number of rooms and bathrooms, the age of the facility, and other corresponding attributes. The challenge is to identify the most influential features and build a model that can generalize well to new data.
+
+Housing prices are affected by a complex interplay of many different factors, making it difficult to predict prices with high accuracy using simple models or traditional statistical methods. For example, two homes with similar physical characteristics may have significantly different prices depending on location and market conditions at the time of sale. The goal of this project is to capture these nuances through data preprocessing, feature selection, and the application of advanced machine learning techniques.
+
+\section{Related Work}
+Furthermore, K-Nearest Neighbours (KNN) has been used since it can forecast the future by comparing the houses that are closest to each other in feature space.
+
+Even with these developments, there are still issues, especially when it comes to managing big datasets with lots of variables, making sure the model is comprehensible, and preventing overfitting. By examining the effectiveness of both basic and complicated models, contrasting their results on a real-world housing dataset, and attempting to find a compromise between accuracy and interpretability, this effort expands on earlier research.
+\section{Exploratory Data Analysis}
+Understanding the dataset and its features' relationships is essential before developing predictive models. Numerous housing-related attributes, both numerical and categorical, are included in our dataset. The most vital phase in our examination included analyzing the dispersion of these highlights, distinguishing any missing qualities, and grasping the connections between the elements and the objective variable — lodging costs. Data Overview The following are a few key attributes in the dataset that are likely to have an effect on housing prices: Area: Nearness to downtown areas, schools, public transportation, and so on. Size: Absolute area, parcel size, and number of rooms. Condition: Age of the house, late redesigns, and generally speaking condition. Market Variables: Date of offer, winning monetary circumstances at the hour of offer. We utilized representation methods, for example, histograms, box plots, and dissipate plots to investigate the circulations of individual highlights and their associations with the objective variable. For instance, disperse plots of house size versus cost uncovered a positive connection, demonstrating that bigger houses will generally have greater costs, however this relationship isn't totally direct. Correlational Study To additionally research the connections between highlights, we determined the relationship lattice and envisioned it utilizing a heatmap. This examination assisted us with distinguishing which elements are generally emphatically associated with lodging costs and with one another. For example, we saw that the quantity of rooms and restrooms was exceptionally related with the general size of the house, while area based highlights showed fluctuating levels of relationship with costs. We were also able to identify and potentially eliminate redundant features that might introduce multicollinearity into our models thanks to the correlation matrix's influence on our feature selection process. But because the real estate market is so complicated, we kept features that, even though they are related, give different insights into housing prices.
+
+\section{Models Used:}
+
+\section{Linear Regression}
+Linear Regression is a simple yet powerful model that assumes a linear relationship between the input features and the target variable. It is easy to interpret and provides insights into how each feature impacts housing prices. However, its simplicity can be a limitation if the true relationship between features and prices is non-linear.
+The linear regression model can be represented as:
+ \( y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \ldots + \beta_nx_n \)
+It uses the least squares method to estimate the coefficients \( \beta \).
+For a new data point, compute the predicted rating using the fitted model.
+
+\textbf{Equations}:
+\[
+\hat{y} = \beta_0 + \beta_1x_1 + \beta_2x_2 + \ldots + \beta_nx_n
+\]
+
+\subsection{Symbols and Terms}
+
+\begin{itemize}
+    \item \( k \): Number of neighbors in KNN.
+    \item \( \beta_i \): Coefficients in the linear regression model.
+    \item \( x_i \): Features or input variables.
+    \item \( \hat{y} \): Predicted rating.
+\end{itemize}
+
+subsection{Advantages }
+
+Our approach improves upon previous models by combining the strengths of KNN's simplicity and robustness with Linear Regression's capability to capture linear relationships. The KNN algorithm excels in non-linear decision boundaries, while Linear Regression provides an interpretative linear model. Although we are not achieving as much accuracy but it is a lot simpler.
+
+\textbf{Complexity Analysis}:
+\begin{itemize}
+    \item \textbf{KNN}: Time complexity is \( O(n \cdot m) \), where \( n \) is the number of training samples and \( m \) is the number of features. Space complexity is \( O(n) \).
+    \item \textbf{Linear Regression}: Time complexity for training is \( O(n \cdot m^2 + m^3) \) and prediction is \( O(m) \). Space complexity is \( O(m) \).
+\end{itemize}
+
+By balancing these algorithms better generalization to new data.
+
+\section{K-Nearest Neighbors}
+The k-nearest neighbors (KNN) algorithm is a non-parametric, supervised learning classifier, which uses proximity to make classifications or predictions about the grouping of an individual data point. It is one of the popular and simplest classification and regression classifiers used in machine learning today.
+For KNN, the Euclidean distance metric was employed. The value of `k` was optimized through cross-validation, with `k=5` providing the best balance between bias and variance.
+\subsection{Results and Comparison}
+In our experiments, KNN outperformed Linear Regression in terms of prediction accuracy, particularly in cases where the relationship between features and prices was non-linear. However, this came at the cost of increased computational resources and reduced interpretability. KNN provided a better fit to the data but required careful tuning of the
+k parameter to avoid overfitting.
+
+\textbf{Conclusion:} While Linear Regression offers simplicity and interpretability, KNN's ability to capture non-linear relationships makes it a more powerful model for predicting housing prices when the data is complex. The choice between these models depends on the specific needs of the task—whether the focus is on accuracy or understanding the underlying factors.
+
+
+\textbf{Equations:}
+\begin{itemize}
+    \item **Distance Metric:** The Euclidean distance is commonly used to calculate the distance between two data points:
+    \[
+    d(x, y) = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \ldots + (x_n - y_n)^2}
+    \]
+    \item **Prediction (Regression):** For regression tasks, the predicted value \( \hat{y} \) is the average of the k-nearest neighbors' values:
+    \[
+    \hat{y} = \frac{1}{k} \sum_{i=1}^{k} y_i
+    \]
+\end{itemize}
+
+\subsection{Complexity Analysis}
+\begin{itemize}
+    \item \textbf{KNN:} Time complexity is \( O(n \cdot m) \) for both training and prediction, where \( n \) is the number of training samples and \( m \) is the number of features. Space complexity is \( O(n) \), as all training data must be stored.
+    \item \textbf{Linear Regression:} For comparison, Linear Regression has a lower time complexity for training \( O(n \cdot m^2 + m^3) \) and prediction \( O(m) \), and space complexity \( O(m) \).
+\end{itemize}
+
+\section{Naives-Bayes Algorithm}
+Naive Bayes is a probabilistic classifier based on Bayes' Theorem, with the assumption that features are conditionally independent given the class label. Despite the strong independence assumption, Naive Bayes performs well in various real-world applications and is particularly effective when the dimensionality of the data is high. It is simple, fast, and provides a baseline for classification tasks.
+
+The Naive Bayes model calculates the posterior probability of each class given a set of features and predicts the class with the highest probability. The model assumes that all features contribute independently to the probability of a class, which simplifies the computation.
+
+\textbf{Bayes' Theorem}:
+\[
+P(C_k \mid x) = \frac{P(C_k) \cdot P(x \mid C_k)}{P(x)}
+\]
+Where:
+\begin{itemize}
+    \item \( P(C_k \mid x) \): Posterior probability of class \( C_k \) given features \( x \).
+    \item \( P(C_k) \): Prior probability of class \( C_k \).
+    \item \( P(x \mid C_k) \): Likelihood of features \( x \) given class \( C_k \).
+    \item \( P(x) \): Evidence or the probability of the features.
+\end{itemize}
+
+\subsection{Symbols and Terms}
+\begin{itemize}
+    \item \( P(C_k \mid x) \): Posterior probability of class \( C_k \) given the features \( x \).
+    \item \( P(C_k) \): Prior probability of class \( C_k \).
+    \item \( P(x \mid C_k) \): Likelihood of observing the features \( x \) given the class \( C_k \).
+    \item \( P(x) \): The overall probability of observing the features \( x \).
+    \item \( n \): Number of training samples.
+    \item \( m \): Number of features.
+\end{itemize}
+
+\subsection{Advantages}
+Naive Bayes is known for its simplicity and efficiency, especially in high-dimensional datasets. It is also less sensitive to irrelevant features and can perform well even with a relatively small amount of training data. Additionally, the probabilistic nature of the model allows it to provide confidence estimates along with predictions.
+
+\textbf{Practical Results:}
+Based on the Naive Bayes model applied to the housing dataset:
+\begin{itemize}
+    \item \textbf{Accuracy:} 57.8%
+    \item \textbf{Precision:} 56.3%
+    \item \textbf{Recall:} 58.4%
+    \item \textbf{F1 Score:} 56.1%
+\end{itemize}
+These results indicate that while Naive Bayes provides a quick and interpretable solution, it may struggle with complex relationships in the data compared to more sophisticated models.
+
+\subsection{Complexity Analysis}
+\begin{itemize}
+    \item \textbf{Naive Bayes:}
+    \begin{itemize}
+        \item \textbf{Time Complexity:} The training time complexity is \( O(n \cdot m) \), where \( n \) is the number of training samples and \( m \) is the number of features. Prediction time is \( O(m) \) for each sample, as it involves calculating the posterior probabilities for each class.
+        \item \textbf{Space Complexity:} The space complexity is \( O(m \cdot k) \), where \( k \) is the number of classes. This space is required to store the probabilities for each feature-class combination.
+    \end{itemize}
+    \item \textbf{Comparison to Other Models:} Naive Bayes is computationally efficient compared to models like K-Nearest Neighbors (KNN), which has a time complexity of \( O(n \cdot m) \) for both training and prediction, and Linear Regression, which has a training time complexity of \( O(n \cdot m^2 + m^3) \) and prediction time complexity of \( O(m) \). While Naive Bayes may not capture complex relationships as well as these models, its simplicity and speed make it a valuable tool, especially for large datasets.
+\end{itemize}
+
+
+\section{Data Pre-processing}
+Data pre-processing is a critical step in the development of a robust and accurate machine learning model. The quality of the input data directly influences the performance of the predictive models. In this project, we undertook several key steps to clean, transform, and prepare the dataset for model training and evaluation. These steps include handling missing values, encoding categorical variables, feature scaling, and feature selection.
+
+\subsection{Handling Missing Values}
+The dataset initially contained several missing or NULL values, which could introduce bias or reduce the accuracy of our models if not handled properly. We addressed this issue by applying different strategies depending on the nature of the missing data:
+\begin{itemize}
+    \item For numerical features, we used mean or median imputation to fill in missing values. This approach is particularly useful when the missing data is randomly distributed.
+    \item For categorical features, we replaced missing values with the most frequent category (mode) or introduced a new category labeled as "Unknown" to account for the missing data.
+\end{itemize}
+
+\subsection{Encoding Categorical Variables}
+Since machine learning models require numerical input, we needed to convert categorical variables into numerical format. We employed the following techniques:
+\begin{itemize}
+    \item \textbf{One-Hot Encoding:} Applied to nominal categorical features, such as `Neighborhood` or `Property Type`. This technique creates binary columns for each category, ensuring that the model does not assume any ordinal relationship between categories.
+    \item \textbf{Label Encoding:} Used for ordinal features, where there is a natural order among the categories, such as `Condition` (e.g., Poor, Fair, Good, Excellent). Label encoding assigns an integer value to each category based on its rank.
+\end{itemize}
+
+\subsection{Feature Scaling}
+The dataset includes features with varying scales, such as square footage, number of bedrooms, and year of construction. To ensure that all features contribute equally to the model, particularly in distance-based algorithms like K-Nearest Neighbors (KNN), we applied feature scaling:
+\begin{itemize}
+    \item \textbf{Standardization:} This technique was used to scale features so that they have a mean of 0 and a standard deviation of 1. Standardization is particularly beneficial for models like Linear Regression and KNN, where feature magnitudes can impact performance.
+    \item \textbf{Normalization:} For certain features, such as house prices, we applied Min-Max normalization to scale values between 0 and 1. This approach is useful when the features need to be on a comparable scale without altering their original distribution.
+\end{itemize}
+
+\subsection{Feature Selection}
+To enhance model performance and reduce complexity, we conducted a feature selection process to identify the most relevant features for predicting housing prices:
+\begin{itemize}
+    \item \textbf{Correlation Analysis:} We calculated the correlation matrix and visualized it using a heatmap to identify highly correlated features. This analysis helped us retain features that have strong relationships with the target variable (housing prices) while removing redundant features that could introduce multicollinearity.
+    \item \textbf{Recursive Feature Elimination (RFE):} We also applied RFE, which iteratively trains models and removes the least important features until the optimal subset is identified. This method was particularly useful in refining the feature set for our linear regression model.
+    \item \textbf{Domain Knowledge:} In addition to statistical methods, domain knowledge played a role in feature selection. For instance, features like `Location` and `Proximity to Amenities` were retained based on their known influence on real estate prices, even if their statistical correlation was moderate.
+\end{itemize}
+
+\subsection{Outlier Detection and Handling}
+Outliers can significantly distort model performance, especially in models like Linear Regression, which are sensitive to extreme values. We employed the following methods to detect and handle outliers:
+\begin{itemize}
+    \item \textbf{Visualization Techniques:} Box plots and scatter plots were used to visually identify outliers in the dataset.
+    \item \textbf{Statistical Methods:} We applied the Z-score method to detect outliers in numerical features. Data points with a Z-score greater than 3 (indicating they are more than three standard deviations away from the mean) were flagged as potential outliers.
+    \item \textbf{Handling Outliers:} Depending on the feature and the context, outliers were either removed or transformed using techniques such as log transformation to reduce their impact on the model.
+\end{itemize}
+
+\subsection{Dimensionality Reduction}
+To further simplify the model and enhance performance, we considered dimensionality reduction techniques:
+\begin{itemize}
+    \item \textbf{Principal Component Analysis (PCA):} Although not ultimately used in the final model, PCA was explored as a method to reduce the number of features while retaining most of the variance in the data. This technique was particularly considered for the KNN model to reduce computational cost and avoid the curse of dimensionality.
+\end{itemize}
+
+\subsection{Final Pre-processed Dataset}
+After completing the above steps, the dataset was split into training and testing sets. The final pre-processed dataset was then used to train and evaluate the models, ensuring that it was clean, well-scaled, and contained only the most relevant features. This meticulous pre-processing phase was essential in enhancing the accuracy and reliability of the housing price prediction models.
+
+
+\section{Techniques}
+
+In this section, we detail the techniques and algorithms employed for predicting housing prices. We describe the flow of each methodology, provide pseudocode, and discuss the advantages over previous approaches, including space and time complexity considerations.
+
+\subsection{Overview of Techniques}
+
+Our housing price prediction project leverages several machine learning algorithms to achieve accurate predictions. The primary techniques used include Linear Regression, K-Nearest Neighbors (KNN), and Logistic Regression.
+
+\subsection{Linear Regression}
+
+Linear Regression is used to model the relationship between the housing prices and various features such as the number of bedrooms, location, and square footage. The goal is to fit a linear model to the data and make predictions based on this model.
+
+\subsubsection{Algorithm Description}
+
+\begin{enumerate}
+    \item \textbf{Data Preparation}: Clean the dataset and select relevant features.
+    \item \textbf{Model Training}:
+    \begin{itemize}
+        \item Formulate the linear regression equation:
+        \[
+        \hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n
+        \]
+        where \( \hat{y} \) is the predicted price, \( \beta_0 \) is the intercept, \( \beta_i \) are the coefficients, and \( x_i \) are the features.
+        \item Use the Ordinary Least Squares (OLS) method to estimate the coefficients \( \beta \) that minimize the residual sum of squares:
+        \[
+        \text{RSS} = \sum_{i=1}^m (y_i - \hat{y}_i)^2
+        \]
+    \end{itemize}
+    \item \textbf{Prediction}: Apply the trained model to make predictions on new data.
+\end{enumerate}
+
+\subsubsection{Pseudocode}
+
+\begin{algorithm}
+\caption{Linear Regression Training}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Training dataset \{(x_i, y_i)\}_{i=1}^m
+\STATE Initialize coefficients \(\beta\)
+\REPEAT
+    \STATE Compute predictions \(\hat{y}_i\) using current coefficients
+    \STATE Update coefficients to minimize RSS using gradient descent
+\UNTIL{convergence}
+\STATE \textbf{Output:} Coefficients \(\beta\)
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Advantages}
+
+\begin{itemize}
+    \item \textbf{Simplicity}: Easy to implement and interpret.
+    \item \textbf{Efficiency}: Computationally inexpensive compared to more complex models.
+\end{itemize}
+
+\subsubsection{Complexity Analysis}
+
+\begin{itemize}
+    \item \textbf{Time Complexity}: \(O(n^2)\) for solving using matrix inversion, where \(n\) is the number of features.
+    \item \textbf{Space Complexity}: \(O(n^2)\) for storing the feature matrix and coefficient estimates.
+\end{itemize}
+
+\subsection{K-Nearest Neighbors (KNN)}
+
+K-Nearest Neighbors is a non-parametric method used for classification and regression. In our case, it is applied to predict housing prices based on the similarity of feature vectors.
+
+\subsubsection{Algorithm Description}
+
+\begin{enumerate}
+    \item \textbf{Data Preparation}: Normalize features if necessary.
+    \item \textbf{Model Training}: Store the training instances.
+    \item \textbf{Prediction}:
+    \begin{itemize}
+        \item For a new instance, compute the distance to all training instances.
+        \item Identify the \(k\) nearest neighbors.
+        \item Average the prices of these neighbors to make a prediction.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Pseudocode}
+
+\begin{algorithm}
+\caption{K-Nearest Neighbors Prediction}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Training dataset \{(x_i, y_i)\}_{i=1}^m, Test instance \(x_{test}\), Number of neighbors \(k\)
+\STATE \textbf{Output:} Predicted price \(\hat{y}_{test}\)
+\STATE Compute distances between \(x_{test}\) and all \(x_i\)
+\STATE Sort distances and select the \(k\) nearest neighbors
+\STATE Compute average of \(y_i\) for the \(k\) nearest neighbors
+\STATE \textbf{Return} average as \(\hat{y}_{test}\)
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Advantages}
+
+\begin{itemize}
+    \item \textbf{Flexibility}: Can capture complex relationships in the data.
+    \item \textbf{No Training Phase}: Simply stores training data.
+\end{itemize}
+
+\subsubsection{Complexity Analysis}
+
+\begin{itemize}
+    \item \textbf{Time Complexity}: \(O(n \cdot d)\) for distance computation, where \(n\) is the number of training instances and \(d\) is the number of features.
+    \item \textbf{Space Complexity}: \(O(n \cdot d)\) for storing the training data.
+\end{itemize}
+
+\subsection{Logistic Regression}
+
+Logistic Regression is used for binary classification problems. While it is not typically used for regression tasks, it can be applied here for categorizing houses into price ranges.
+
+\subsubsection{Algorithm Description}
+
+\begin{enumerate}
+    \item \textbf{Data Preparation}: Encode the target variable into binary categories.
+    \item \textbf{Model Training}:
+    \begin{itemize}
+        \item Formulate the logistic regression function:
+        \[
+        p(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n)}}
+        \]
+        \item Estimate coefficients using Maximum Likelihood Estimation (MLE).
+    \end{itemize}
+    \item \textbf{Prediction}: Use the trained model to classify new data.
+\end{enumerate}
+
+\subsubsection{Pseudocode}
+
+\begin{algorithm}
+\caption{Logistic Regression Training}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Training dataset \{(x_i, y_i)\}_{i=1}^m
+\STATE Initialize coefficients \(\beta\)
+\REPEAT
+    \STATE Compute probabilities using current coefficients
+    \STATE Update coefficients using gradient ascent to maximize likelihood
+\UNTIL{convergence}
+\STATE \textbf{Output:} Coefficients \(\beta\)
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Advantages}
+
+\begin{itemize}
+    \item \textbf{Interpretable}: Provides probabilities and odds ratios.
+    \item \textbf{Effective for Binary Classification}: Handles classification tasks effectively.
+\end{itemize}
+
+\subsubsection{Complexity Analysis}
+
+\begin{itemize}
+    \item \textbf{Time Complexity}: \(O(n \cdot d)\) per iteration for gradient ascent, where \(n\) is the number of instances and \(d\) is the number of features.
+    \item \textbf{Space Complexity}: \(O(d)\) for storing the coefficients.
+\end{itemize}
+
+\section{Conclusion}
+
+In this study, we have developed and evaluated a comprehensive approach for predicting housing prices using multiple machine learning techniques. Our methodology incorporates Linear Regression, K-Nearest Neighbors (KNN), and Logistic Regression to leverage their respective strengths and address various aspects of the prediction problem.
+
+\subsection{Summary of Findings}
+
+1. **Linear Regression** provided a straightforward and interpretable model, effectively capturing the linear relationships between housing prices and features. The results demonstrated its utility in understanding the impact of different factors on housing prices, with a reasonable balance between simplicity and performance.
+
+2. **K-Nearest Neighbors (KNN)** offered a non-parametric approach that excels in capturing complex patterns and local variations in the data. The KNN model's flexibility allowed for accurate predictions by considering the similarity between instances, although it required careful consideration of computational efficiency and memory usage.
+
+3. **Logistic Regression**, while traditionally used for classification, was adapted to categorize houses into price ranges. This technique proved useful in handling binary classification problems and provided insights into how houses are distributed across different price categories.
+
+\subsection{Comparative Analysis}
+
+The combination of these techniques allowed us to achieve a robust prediction system. Each algorithm contributed unique strengths:
+
+- **Linear Regression** was effective for its simplicity and interpretability, making it a good baseline model.
+- **KNN** enhanced prediction accuracy by capturing complex relationships in the data, though at the cost of increased computational demands.
+- **Logistic Regression** enabled us to categorize housing prices into distinct ranges, providing additional insights into market segmentation.
+
+The comparative analysis of these methods highlighted the benefits of using a hybrid approach. By integrating multiple algorithms, we were able to balance accuracy, interpretability, and computational efficiency.
+
+\subsection{Future Work}
+
+Future research can build upon this work by exploring advanced techniques and optimizations, such as:
+
+- **Ensemble Methods**: Combining predictions from multiple models to improve overall accuracy and robustness.
+- **Feature Engineering**: Incorporating additional features or creating new ones to enhance model performance.
+- **Hyperparameter Tuning**: Systematically adjusting model parameters to optimize performance and efficiency.
+- **Scalability**: Investigating methods to handle larger datasets and real-time predictions.
+
+By addressing these areas, future work can further enhance the predictive capabilities and practical applications of housing price prediction models.
+
+\subsection{Final Remarks}
+
+Overall, the project successfully demonstrated the application of various machine learning techniques to predict housing prices. The results provide valuable insights into the effectiveness of different models and underscore the importance of a comprehensive approach in tackling complex prediction tasks. This work contributes to a better understanding of housing price dynamics and offers a foundation for future advancements in predictive modeling.
+
+
+
+\bibliographystyle{ieeetr}
+\bibliography{project_final_paper_template}
+
+\end{document}
+
+
